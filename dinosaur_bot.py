@@ -29,6 +29,12 @@ class MainApp:
             pixel_color = pya.pixel(position_x, position_y)
             print(f"Mouse color at: {pixel_color}")
 
+    def detect_cactus(self):
+        region = (self.initial_area_x, self.initial_area_y, (self.final_area_x - self.initial_area_x), (self.final_area_y - self.initial_area_y))
+        screenshot = pya.screenshot(region = region)
+        screenshot.save('region_captured.png')
+
 if __name__ == "__main__":
-    main = MainApp
-    main.read_color()
+    main = MainApp()
+    while True:
+        main.detect_cactus()
